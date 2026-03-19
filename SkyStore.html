@@ -1,801 +1,277 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sky Store - Productos Destacados</title>
-  <meta name="description" content="Descubre los productos destacados de Sky Store. Envíos a todo el país.">
-  <meta property="og:title" content="Sky Store - Productos Destacados">
-  <meta property="og:description" content="Los más elegidos de la semana:">
-  <meta property="og:image" content="https://i.blogs.es/68165f/redmi-14c/1366_521.jpeg">
-  <meta property="og:url" content="https://your-site.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    /* Reset y base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      color: #333;
-      line-height: 1.4;
-      background: linear-gradient(90deg, #2563eb, #6a89cc, #82ccdd, #4ecdc4, #ffeaa7);
-      background-size: 400% 400%;
-      animation: gradientAnimation 20s ease infinite;
-      padding: 40px 20px;
-      min-height: 100vh;
-    }
-    @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+<title>Sky Store Argentina</title>
 
-    /* Header simplificado (solo logo centrado) */
-    header {
-      display: flex;
-      justify-content: center; /* Centra el logo horizontalmente */
-      align-items: center;
-      padding: 1rem;
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-      position: sticky;
-      top: 0;
-      z-index: 15;
-      box-shadow: 0 2px 4px rgba(0,0,0,.05);
-      flex-wrap: wrap;
-      gap: 1rem;
-            max-width: 1100px; /* Nuevo: Limita el ancho máximo */
-      margin: 0 auto; /* Nuevo: Centra el header */
-      border-radius: 12px; /* NUEVO: Bordes redondos como en las cards */
-    }
-    .brand {
-      font-family: 'Poppins', Arial, sans-serif;
-      font-weight: 800;
-      font-size: 2.5rem; /* Más grande */
-      background: linear-gradient(90deg, #2563eb, #6a89cc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      user-select: none;
-      cursor: default;
-      text-align: center;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
-    /* Layout principal */
-    main.container {
-      max-width: 1100px;
-      margin: 2rem auto 0;
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 1rem;
-    }
-    @media (max-width: 768px) {
-      main.container {
-        grid-template-columns: 1fr;
-      }
-      .brand {
-        font-size: 2rem; /* Ajuste para mobile */
-      }
-    }
+<style>
+body{
+  font-family:'Poppins';
+  background:linear-gradient(120deg,#0f172a,#1e293b,#334155);
+  color:#fff;
+  padding:20px;
+}
 
-    /* Hero destacado */
-    .hero {
-      background: #fff;
-      padding: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      margin-bottom: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,.05);
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .hero h1 {
-      font-family: 'Poppins', Arial, sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #2563eb, #6a89cc, #82ccdd);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      user-select: none;
-      margin-bottom: 0.25rem;
-    }
-    .hero p {
-      color: #666;
-      margin-top: 0;
-      user-select: none;
-    }
+/* HEADER */
+header{text-align:center;margin-bottom:20px}
 
-    /* Cards de productos */
-    .product-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-bottom: 1rem;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start; /* Cambiado para mejor alineación con texto largo */
-      flex-wrap: wrap;
-    }
-    .product-card img {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 12px;
-      flex-shrink: 0;
-    }
-    .product-content {
-      flex: 1;
-      min-width: 250px;
-    }
-    .product-content h2 {
-      font-family: 'Poppins', Arial, sans-serif;
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-      color: #2563eb;
-      user-select: none;
-    }
-    .product-content p {
-      color: #444;
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-bottom: 1rem;
-    }
-    .features {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-      margin-bottom: 1rem;
-      color: #333;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    .features li {
-      margin-bottom: 0.25rem;
-    }
-    .price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #28a745; /* Verde para precio */
-      background: #d4edda;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-    .btn {
-      background: #2563eb;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-block;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color 0.3s ease;
-      font-size: 1rem;
-    }
-    .btn:hover {
-      background: #1e4db7;
-    }
+.brand{
+  font-size:2.5rem;
+  font-weight:600;
+  background:linear-gradient(270deg,#4ade80,#38bdf8,#fb923c,#4ade80);
+  background-size:600% 600%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientMove 6s ease infinite;
+}
 
-    /* Sidebar */
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .newsletter {
-      background: #fff;
-      padding: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,.05);
-    }
-    .socials {
-      display: flex;
-      gap: .5rem;
-      margin-top: .5rem;
-    }
-    .socials a {
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: 600;
-    }
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
 
-    /* Botón ghost para enlaces sociales */
-    .btn.btn--ghost {
-      background: transparent;
-      border: 1px solid #2563eb;
-      color: #2563eb;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.3s ease;
-    }
-    .btn.btn--ghost:hover {
-      background: #2563eb;
-      color: white;
-    }
+/* HERO COMPLETO */
+.hero{
+  text-align:center;
+  padding:50px 30px;
+  border-radius:20px;
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.05);
+  margin-bottom:30px;
+}
 
-    /* Estilos para formulario (estático) */
-    .newsletter form input {
-      width: 100%;
-      padding: .4rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin-bottom: .5rem;
-    }
-    .newsletter form button {
-      width: 100%;
-    }
+.badge{
+  background:#22c55e;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:0.9rem;
+  display:inline-block;
+}
 
-    /* Footer */
-    footer {
-      background: #fff;
-      padding: 1rem;
-      border-top: 1px solid #ddd;
-      margin-top: 2rem;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
-      color: #111;
-      user-select: none;
-    }
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .col {
-      min-width: 150px;
-    }
-    .col ul {
-      list-style: none;
-      padding: 0;
-    }
-    .col li {
-      margin-bottom: .3rem;
-      font-weight: 600;
-    }
-    .col li a {
-      color: #2563eb;
-      text-decoration: none;
-    }
-    .col li a:hover {
-      text-decoration: underline;
-    }
+.hero-sub{color:#ddd;margin:10px 0;font-size:1.1rem}
+.hero-desc{color:#bbb;margin-bottom:20px;line-height:1.6}
 
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: .5rem;
-        justify-content: center; /* Centrado en mobile */
-      }
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-      }
-      .footer-grid {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      main.container {
-        grid-template-columns: 1fr;
-      }
-      .product-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .product-card img {
-        width: 100%;
-        height: auto;
-      }
-      .product-content {
-        min-width: 100%;
-      }
-    }
-  </style>
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* BOTONES */
+.btn{
+  background:#2563eb;
+  padding:10px 15px;
+  border-radius:999px;
+  text-decoration:none;
+  color:#fff;
+  display:inline-block;
+  transition:.3s;
+}
+.btn:hover{transform:scale(1.05)}
+
+.btn-outline{
+  background:transparent;
+  border:1px solid #fff;
+}
+.btn-outline:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.06);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+  transition:.3s;
+}
+.card:hover{transform:translateY(-8px)}
+
+/* IMAGEN BOX */
+.img-box{
+  background:#fff;
+  padding:25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:260px;
+}
+
+.img-box img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  transition:.4s;
+}
+
+.card:hover .img-box img{
+  transform:scale(1.08);
+}
+
+/* MINIATURAS */
+.thumbs{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding:10px;
+}
+
+.thumbs img{
+  width:55px;
+  height:55px;
+  object-fit:contain;
+  background:#fff;
+  border-radius:8px;
+  padding:4px;
+  cursor:pointer;
+  opacity:.7;
+}
+
+.thumbs img:hover{
+  opacity:1;
+  transform:scale(1.1);
+}
+
+/* CONTENIDO */
+.content{
+  padding:20px;
+}
+
+.price{
+  color:#4ade80;
+  font-weight:bold;
+  margin:10px 0;
+}
+
+.status{
+  padding:6px 12px;
+  border-radius:999px;
+}
+
+.disponible{background:#22c55e}
+.agotado{background:#ef4444}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1 class="brand" tabindex="0" aria-label="Sky Store">
-      Sky Store Argentina
-    </h1>
-  </header>
-
-  <main class="container" role="main">
-    <section>
-      <div class="hero" aria-label="Sección destacados">
-        <div>
-          <h1>Destacados</h1>
-          <p style="color:#666;margin-top:.25rem">Los más elegidos de la semana</p>
-        </div>
-      </div>
-
-
-      <article class="product-card" tabindex="0" aria-label="XIAOMI Redmi 14C">
-        <img src="https://i.pinimg.com/1200x/8b/00/03/8b0003653e5872ace4bf213a0766425c.jpg" loading="lazy" />
-        <div class="product-content">
-          <h2>XIAOMI Redmi 14C 16GB</h2>
-            <p>El celular cuenta con pantalla grande de 6,88″ a 120 Hz, buen rendimiento para el uso diario gracias a su Helio G81-Ultra, cámara principal de 50 MP, batería de 5160 mAh que dura todo el día y extras útiles como huella lateral, desbloqueo facial y expansión por microSD. Ideal para redes, videos y tareas cotidianas.</p>
-
-          <div class="price">Precio: $310.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Redmi 14C por $310.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="XIAOMI Redmi 13C">
-        <img src="https://i.pinimg.com/736x/28/f3/5b/28f35b9cb113e8485093e89d830c12e8.jpg" loading="lazy" />
-        <div class="product-content">
-          <h2>XIAOMI Redmi 13C 8GB</h2>
-            <p>El Xiaomi Redmi 13C (8GB RAM) es un celular económico con pantalla de 6,74″ a 90 Hz, buen rendimiento para uso diario gracias al Helio G85, cámara principal de 50 MP y batería de 5000 mAh que dura todo el día. Ofrece USB-C, huella lateral y opción de ampliar almacenamiento, siendo una opción equilibrada y rendidora para tareas cotidianas.</p>
-
-          <div class="price">Precio: $250.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Redmi 13C por $250.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-      <article class="product-card" tabindex="0" aria-label="Redmi A5">
-        <img src="https://i.pinimg.com/1200x/86/ca/cd/86cacd9621f8f9595d056f88697d371b.jpg" loading="lazy" />
-        <div class="product-content">
-          <h2>Redmi A5 </h2>
-            <p>El Redmi A5 con pantalla amplia de 6,88″ HD+ con 120 Hz — ideal para redes, videos y uso diario con buena fluidez. Tiene procesador Unisoc T7250, cámara trasera de 32 MP y frontal de 8 MP, batería de 5200 mAh que alcanza para todo el día, y funciones útiles como lector de huellas lateral, USB-C, jack de audio y expansión con microSD. Perfecto si buscas un celular económico y sencillo para tareas cotidianas.</p>
-
-          <div class="price">Precio: $240.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Redmi A5 por $240.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-
-
-
-      <article class="product-card" tabindex="0" aria-label="Monitor Gamer 21,5 Led Daihatsu Hd Lm2150 Hdmi Vga 75hz Va Negro">
-        <img src="https://maximusgamer.com.br/wp-content/uploads/2024/05/C3PLUS_MR-215_02.jpg" loading="lazy" />
-        <div class="product-content">
-          <h2>Monitor Gamer 21,5 Led Daihatsu Hd Lm2150 Hdmi Vga 75hz Va Negro</h2>
-            
-            <p>El monitor LED Daihatsu OFISU LM2150 está diseñado para ofrecer una experiencia visual clara, cómoda y eficiente, ideal para entornos de oficina, estudio o tareas cotidianas. Su pantalla de 21,5 pulgadas con resolución Full HD 1920 x 1080 píxeles garantiza una imagen nítida, precisa y con excelente nivel de detalle, ya sea para documentos, navegación web o contenido multimedia.</p>
-
-          <div class="price">Precio: $240.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar Monitor Gamer 21,5 Led Daihatsu Hd Lm2150 por $240.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Drone E88 Pro Max">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_962163-MLA89515823976_082025-F.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Drone E88 Pro Max</h2>
-            <p>Drone E88 Pro Max: drone plegable con cámara HD, conexión WiFi, control remoto y modo de vuelo estable. Ideal para capturar fotos y videos aéreos con facilidad.</p>
-
-          <div class="price">Precio: $98.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar Drone el E88 Pro Max por $98.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Camara De Seguridad Doble Con Alarma Icsee Con Sirena">
-        <img src="https://d22fxaf9t8d39k.cloudfront.net/98b9d72f0256fca67b10bcfd7910e8f3b8d86eff1ce80e86c5089736d29cecb6216845.jpg" loading="lazy" />
-        <div class="product-content">
-          <h2>Camara De Seguridad Doble Con Alarma Icsee Con Sirena</h2>
-            
-            <p>Cámara de seguridad doble lente iCSee con alarma y sirena, ideal para vigilar tanto el interior como el exterior. Incluye visión nocturna, detección de movimiento, micrófono-altavoz bidireccional y compatibilidad con app móvil para monitoreo remoto.</p>
-
-          <div class="price">Precio: $78.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar la Camara De Seguridad Doble Con Alarma Icsee Con Sirena por $78.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-            <article class="product-card" tabindex="0" aria-label="Soporte Para 2 Monitores Brazo Escritorio 15 A 33">
-        <img src="https://centrogar.com.ar/wp-content/uploads/2024/05/13124-600x504.png" loading="lazy" />
-        <div class="product-content">
-          <h2>Soporte Para 2 Monitores Brazo Escritorio</h2>
-            
-            <p>Diseñado para una alta eficiencia: este soporte para dos monitores admite el uso de 2 monitores de juegos, pantallas planas o curvas, uno al lado del otro, ¡brindándole el doble de experiencia visual y el doble de eficiencia! Nuestro brazo de monitor dual es una buena ayuda para jugadores, diseñadores, programadores y personas que realizan múltiples tareas.</p>
-
-          <div class="price">Precio: $70.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar Soporte Para 2 Monitores Brazo Escritorio por $70.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-      <article class="product-card" tabindex="0" aria-label="Parlante Barra Sonido Bluetooth Luces Rgb Con Subwoofer - Negro">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_968884-MLA95946915088_102025-F.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Parlante Barra Sonido Bluetooth Luces Rgb Con Subwoofer</h2>
-            
-            <p>La barra de sonido inalámbrica KTS-1965 es un potente subwoofer diseñado para ofrecer graves profundos, sonido de alta fidelidad y una experiencia de audio inmersiva . Con efectos de iluminación RGB , este altavoz crea una atmósfera vibrante, ideal para fiestas, juegos y entretenimiento en casa.</p>
-
-          <div class="price">Precio: $56.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar Parlante Barra Sonido Bluetooth Luces Rgb Con Subwoofer por $56.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-      <article class="product-card" tabindex="0" aria-label="Producto Soporte">
-        <img src="https://okeyrosario.com.ar/wp-content/uploads/2020/04/soportemovil2.jpg" loading="lazy" />
-        <div class="product-content">
-          <h2>HTV-73003 Soporte de TV 14-55</h2>
-          <p>Soporte de pared articulado con brazo móvil, compatible con televisores de 14 a 55 pulgadas. Permite girar e inclinar la pantalla, soporta hasta 50 kg y es ideal para ajustar el ángulo de visión fácilmente.</p>
-
-          <div class="price">Precio: $20.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el HTV-73003 Soporte de TV 14-55 por $20.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Producto Balanza">
-        <img src="https://m.media-amazon.com/images/I/51Cv8QgNmUL._UF350,350_QL80_.jpg" loading="lazy" />
-        <div class="product-content">
-          <h2>Balanza digital de baño personal</h2>
-            <ul>Capacidad de peso elevada 180kg max.</ul>
-            <Ul>Sensores de carga en las esquinas 4 sensores para medir con precisión.</ul>
-            <ul>Plataforma de vidrio templado o material resistente.</ul>
-            <ul>Pantalla grande y clara (LCD) con números legibles.</ul>
-            <ul>Encendido/apagado automático para ahorrar batería.</ul>
-
-          <div class="price">Precio: $20.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar la Balanza digital de baño personal por $20.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <!-- septimo Producto: -->
-      <article class="product-card" tabindex="0" aria-label="Mini Parlante Bluetooth Portátil">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_855539-MLA79971100604_102024-O.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Mini Parlante Bluetooth Portátil Recargable Rgb</h2>
-            <p>Este mini parlante bluetooth redondo tiene entrada para tarjeta sd y viene en una variedad de colores. Es pequeño, moderno y multicolor, lo que lo hace fácil de llevar para disfrutar de la música en cualquier momento y lugar. Su transmisión es más rápida, con una señal estable y fuerte anti interferencia.</p>
-
-          <div class="price">Precio: $15.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Mini Parlante Bluetooth Portátil Recargable Rgb por $15.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Vaso Térmico 473ml parlante Inalámbrico">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_697001-MLU78868157890_092024-O.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Vaso Térmico Parlante Inalámbrico Rgb </h2>
-            <p>Material: Acero inoxidable, Cuenta con destapador, Fácil de limpiar, Ligero y Resistente. Doble capa de acero inoxidable, Parlante de música con luces y Incluye cargador Colores varios</p>
-
-          <div class="price">Precio: $21.400</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Vaso Térmico 473ml Parlante Inalámbrico Rgb Music por $21.400" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Vaso para caffe">
-        <img src="https://acdn-us.mitiendanube.com/stores/001/729/503/products/2-5f227648f53993ae3417480012968560-480-0.png" loading="lazy" />
-        <div class="product-content">
-          <h2>Vaso para caffe con parlante</h2>
-            <p>Vaso térmico 420ml con tapa y sorbete, mantiene tu bebida fría o caliente! Conectividad Bluetooth, llevá tu música a donde vayas Carga por 12V, práctico para usar en el auto o en cualquier lugar</p>
-
-          <div class="price">Precio: $19.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Vaso Térmico 473ml Parlante Inalámbrico Rgb Music por $19.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Vaso Térmico Frio Calor 1200ml Acero Inoxidable Sorbete">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_868255-MLA89964235235_082025-O.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Vaso Térmico Frio Calor 1200ml Acero Inoxidable Sorbete</h2>
-            <p>Capacidad de 1200 ml, este vaso es perfecto para disfrutar de tus bebidas calientes y frías durante horas. Diseño elegante de acero inoxidable</p>
-
-          <div class="price">Precio: $25.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Vaso Térmico Frio Calor 1200ml Acero Inoxidable Sorbete por $25.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-      <article class="product-card" tabindex="0" aria-label="Marcadores doble punta 48PCS">
-        <img src="https://promart.vteximg.com.br/arquivos/ids/7571394-444-444/image-4890bd85c56c4ff99b70dd1207bfeb0e.jpg?v=638336962913930000" loading="lazy" />
-        <div class="product-content">
-          <h2>Marcadores doble punta 48PCS</h2>
-            <p>Todos los plumones se colocan en una base organizador evitando que estén desordenados dentro del estuche. Es sencillo de llevar en cualquier lugar porque tiene un asa en la parte superior y una correa para el hombro. Es un regalo perfecto para quienes dan rienda suelta a su creatividad.</p>
-
-          <div class="price">Precio: $18.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar Marcadores doble punta 48PCS por $18.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Balanza Seis A10 Digital Bluetooth 180 kg">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_667933-MLA75215501499_032024-O.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Balanza Seis A10 Digital Bluetooth 180 kg</h2>
-            <p>La Balanza Seis A10 Digital Bluetooth 180 kg es una balanza de vidrio templado con sensores de alta precisión, pantalla LED y conectividad Bluetooth para sincronizar datos con tu celular. Soporta hasta 180 kg y suele usarse para monitorear peso corporal y progreso en salud con apps compatibles.</p>
-
-          <div class="price">Precio: $18.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar la Balanza Seis A10 Digital Bluetooth 180 kg por $18.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-
-      <article class="product-card" tabindex="0" aria-label="Cámara de seguridad para exteriores, cámaras de seguridad para exteriores con PTZ de 360°">
-        <img src="https://m.media-amazon.com/images/I/71dzxbDNW-L._AC_SL1500_.jpg" loading="lazy" />
-        <div class="product-content">
-          <h2>Cámara de seguridad para exteriores de 360°</h2>
-            <p>Detección de movimiento humano PIR: la cámara gira 355° y 90° con zoom 4x, rastrea movimientos en 360° y reduce falsos avisos por autos o hojas. Control total desde la app.</p>
-
-          <div class="price">Precio: $28.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar la Cámara de seguridad para exteriores de 360° por $28.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Tripode Para Celulares Y Camaras 3110 Extensible 1.10m">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_608798-MLA92660665649_092025-F.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Tripode Para Celulares Y Camaras 3110 Extensible 1.10m</h2>
-            
-            <p>Con una altura ajustable que va desde los 34 cm hasta los 110 cm, podrás capturar imágenes desde cualquier ángulo y en cualquier situación. Ya sea que estés utilizando tu celular o una cámara, este trípode te brinda tomas nítidas y precisas. Además, su sistema de nivelación integrado garantiza que tus fotos y videos estén siempre perfectamente alineados, sin importar el terreno</p>
-
-          <div class="price">Precio: $19.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Tripode Para Celulares Y Camaras 3110 Extensible 1.10m por $19.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-      <article class="product-card" tabindex="0" aria-label="Auriculares bluetooth">
-        <img src="https://i.pinimg.com/1200x/cc/42/bd/cc42bd2bacea601bbce2b800fc44ddb6.jpg" loading="lazy" />
-        <div class="product-content">
-          <h2>Airdops JK-607</h2>
-            <p>Los Airdops JK-607 son auriculares inalámbricos económicos con Bluetooth 5.3, buena comodidad, micrófono integrado y una autonomía de unas 4–6 horas con su estuche de carga. Son una opción básica pero práctica para música, videos y llamadas del día a día.</p>
-
-          <div class="price">Precio: $14.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Airdops JK-607 por $14.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-      <article class="product-card" tabindex="0" aria-label="Auriculares bluetooth">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_615249-MLA88361102858_072025-O.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Airdops JK-605</h2>
-            <p>Los JK-605 son auriculares inalámbricos económicos con Bluetooth 5.3, autonomía de unas 5 horas, micrófono integrado, control táctil y resistencia al agua IPX4. Son livianos, cómodos y prácticos para música, videos y llamadas del día a día.</p>
-
-          <div class="price">Precio: $12.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Airdops JK-605 por $12.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Auriculares bluetooth">
-        <img src="https://ironphone.com.ar/wp-content/uploads/2025/05/D_NQ_NP_2X_657828-MLA88408596407_072025-F-500x552.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Airdops JK-604</h2>
-            <p>Los JK-604 son auriculares inalámbricos económicos con Bluetooth 5.3, unas 5 horas de autonomía, micrófono integrado, estuche con pantalla LED y resistencia al agua IPX7. Simples, cómodos y prácticos para uso diario.</p>
-
-          <div class="price">Precio: $10.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Airdops JK-604 por $10.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-
-      <article class="product-card" tabindex="0" aria-label="Auriculares bluetooth">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_654065-MLA91448809307_092025-O.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Ultrapods Max TWS 5.3</h2>
-            <p>Los Ultrapods Max TWS 5.3 son auriculares inalámbricos económicos con buen sonido estéreo, cancelación de ruido ENC para llamadas más claras, 5–6 horas de batería, controles táctiles y estuche con pantalla LED. Conexión rápida y estable gracias a Bluetooth 5.3 y diseño cómodo en color celeste pálido.</p>
-
-          <div class="price">Precio: $10.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Ultrapods Max TWS 5.3 por $10.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-      <article class="product-card" tabindex="0" aria-label="Auriculares bluetooth">
-        <img src="https://dcdn-us.mitiendanube.com/stores/131/954/products/f95-plus-11-2ede6fd3a166bbc39116812591873992-1024-1024.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Auricular F9-5 Plus Fan Pro</h2>
-            <p>Los Fan Pro F9-5 Plus son auriculares inalámbricos TWS (True Wireless) con Bluetooth 5.x, con diseño in-ear, micrófono integrado y cancelación de ruido. Tienen batería suficiente para unas 5 horas de uso continuo (más con el estuche cargador), son resistentes al agua con norma IPX5, y destacan por su comodidad, ligereza y practicidad para música, videos o llamadas sin cables.</p>
-
-          <div class="price">Precio: $10.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Auricular F9-5 Plus Fan Pro por $10.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-
-
-
-
-
-      <article class="product-card" tabindex="0" aria-label="Lápiz puntero láser Presenter For Teacher, luz verde, láser, color negro">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_728114-MLA96419627457_102025-F.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Lápiz puntero láser Presenter For Teacher, luz verde, láser, color negro</h2>
-            
-            <p>El puntero láser verde se usa ampliamente en astronomía, ingeniería, profesores, etc. Este láser es monocromo, tiene una longitud de onda muy bien definida, su trazador quema superficies y, por lo tanto, no es adecuado para niños.</p>
-
-          <div class="price">Precio: $16.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Lápiz puntero láser por $16.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-
-      <article class="product-card" tabindex="0" aria-label="Manguera Expandible Magic House Para Jardin 15m/50ft">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_680572-MLA90933364823_082025-F.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Manguera Expandible Magic House Para Jardin 15m/50ft</h2>
-            
-            <p>Su diseño liviano y expandible permite una fácil maniobrabilidad, adaptándose a diferentes espacios sin esfuerzo. Simplemente conéctala al grifo y observa cómo se expande al instante, facilitando el riego incluso en las áreas más difíciles de alcanzar.</p>
-
-          <div class="price">Precio: $15.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar la Manguera Expandible Magic House Para Jardin por $15.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Auriculares Bluetooth P9">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_716921-MLA92207119471_092025-F.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Auriculares Bluetooth P9</h2>
-            
-            <p>Auriculares inalámbricos P9 Slim color blanco, con conexión Bluetooth, micrófono incorporado y cancelación de ruido. Ofrecen sonido nítido, buen alcance y diseño compacto ideal para música, llamadas o uso diario.</p>
-
-          <div class="price">Precio: $20.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Auricular bluetooth P9 por $20.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Termo 1200ml Acero Inoxidable Manija Doble Capa Pico Cebador Verde">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_933383-MLA80227659614_112024-O.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Termo 1200ml Acero Inoxidable Manija Doble Capa Pico Cebador Verde</h2>
-            
-            <p>Diseñado en tecnología de alto estándar. Combina materiales resistentes y duraderos que potencian la usabilidad de sus productos, bien sea de forma cotidiana, camping o en cualquier contexto. Resiste cualquier condición climática, conserva la temperatura de tus bebidas y es 100% portable.</p>
-
-          <div class="price">Precio: $20.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Termo 1200ml Acero Inoxidable por $20.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-
-
-
-      <article class="product-card" tabindex="0" aria-label="Porta Botella Termica con correa">
-        <img src="https://mtpatagonico.com.ar/wp-content/uploads/2021/09/17616814119acf8c06ab8d5448045c5ae346aacefd.webp.jpg" loading="lazy" />
-        <div class="product-content">
-          <h2>Porta Botella Termica con correa</h2>
-            
-            <p>Funda porta botella térmica con correa ajustable y bolsillo lateral, ideal para transportar tu botella cómodamente durante caminatas, al gimnasio o al trabajo.</p>
-
-          <div class="price">Precio: $25.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar Porta Botella Termica con correa por $25.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-
-
-
-      <article class="product-card" tabindex="0" aria-label="Bacha De Cocina Inteligente Panel Digital 46x75x23cm Acero Inoxidable">
-        <img src="https://images.bidcom.com.ar/resize?src=https://static.bidcom.com.ar/publicacionesML/productos/BACHA002/1000x1000-BACHA002.jpg&w=500&q=100" loading="lazy" />
-        <div class="product-content">
-          <h2>Bacha De Cocina Inteligente Panel Digital 46x75x23cm Acero Inoxidable </h2>
-            
-            <p>Fregadero de acero inoxidable 304 resistente a rayones, golpes y altas temperaturas. Incluye grifo extraíble con 4 modos de agua, pantalla digital que muestra temperatura y tiempo, y sistema de limpiavasos integrado. Su diseño silencioso con cortina de agua oculta y superficie nano antibacteriana facilita una limpieza eficiente, duradera y moderna.</p>
-
-          <div class="price">Precio: $420.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar Bacha De Cocina Inteligente por $420.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Botella térmica con termómetro LED digital de acero inoxidable de 500 ml">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_971118-MLU73202220880_122023-F.webp" loading="lazy" />
-        <div class="product-content">
-          <h2>Botella térmica con termómetro LED digital de acero inoxidable de 500 ml</h2>
-            
-            <p>Botella térmica de acero inoxidable de 500 ml con tapa inteligente que incluye pantalla LED para mostrar la temperatura del líquido. Mantiene las bebidas frías o calientes por varias horas, es resistente, libre de BPA y cuenta con un diseño moderno y portátil ideal para uso diario, viajes o actividades deportivas.</p>
-
-          <div class="price">Precio: $18.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar la Botella térmica con termómetro por $18.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-      <article class="product-card" tabindex="0" aria-label="Vaso termico con tapa antiderrame">
-        <img src="https://movilstoresanluis.com.ar/wp-content/uploads/2025/10/1000407386.png" loading="lazy" />
-        <div class="product-content">
-          <h2>Vaso termico con tapa antiderrame</h2>
-            
-            <p>Vaso térmico con tapa antiderrame ideal para café, té o bebidas frías. Mantiene la temperatura por horas gracias a su diseño aislante. Fabricado en material resistente, cómodo de llevar y apto para usar en el auto, oficina o actividades al aire libre. Tapa segura, fácil de limpiar y perfecta para evitar derrames.</p>
-
-          <div class="price">Precio: $18.000</div>
-          <a href="https://wa.me/5491164022879?text=Hola, quiero comprar el Vaso termico con tapa antiderrame por $18.000" class="btn" target="_blank" rel="noopener">Comprar ahora</a>
-        </div>
-      </article>
-
-
-
-
-    </section>
-
-<aside class="sidebar" aria-label="Barra lateral">
-  <div class="newsletter">
-    <h3>Recibí todas las ofertas</h3>
-    <p style="color:#666">Suscribite y enterate antes que nadie.</p>
-    <form id="whatsappForm" aria-label="Formulario de suscripción por WhatsApp">
-      <input
-        type="email"
-        id="email"
-        placeholder="tu@email.com"
-        required
-        aria-label="Correo electrónico para suscripción"
-      />
-      <button class="btn" type="submit">Suscribirme</button>
-    </form>
+<header>
+  <h1 class="brand">Sky Store Argentina</h1>
+</header>
+
+<!-- HERO COMPLETO -->
+<section class="hero">
+
+  <p class="badge">🚀 Tienda online confiable en Argentina</p>
+
+  <h2>Todo lo que buscás en tecnología, en un solo lugar</h2>
+
+  <p class="hero-sub">
+    Emprendimiento 100% independiente, creado con esfuerzo y dedicación para ofrecerte productos de calidad al mejor precio.
+  </p>
+
+  <p class="hero-desc">
+    📦 Envíos a todo CABA y a toda Argentina<br>
+    🚚 Envíos gratuitos en Zona Oeste<br>
+    ⚡ Atención rápida, directa y personalizada
+  </p>
+
+  <div class="hero-buttons">
+    <a href="#productos" class="btn">Ver productos</a>
+    <a href="https://wa.me/5491164022879?text=Hola! Quiero hacer una consulta" target="_blank" class="btn btn-outline">
+      Consultar 💬
+    </a>
   </div>
 
-    <div class="newsletter">
-        <h3>Contacto rápido</h3>
-        <p style="color:#666;font-size:.9rem">Chateá con nosotros por WhatsApp o seguinos en Instagram</p>
-        <div class="socials">
-              <a class="btn btn--ghost" href="https://wa.me/5491164022879" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
-              <!--<a class="btn btn--ghost" href="https://instagram.com/skystore" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>-->
-        </div>
+</section>
 
-    </div>
+<!-- PRODUCTOS -->
+<section id="productos" class="grid">
 
-    <div class="newsletter">
-        <h3>Medios de pago</h3>
-        <p style="color:#666">Transferencia / Mercado Pago / Tarjetas / Efectivo</p>
-    </div>
+<!-- TRIPODE -->
+<div class="card">
+<div class="img-box">
+<img id="p1" src="https://http2.mlstatic.com/D_NQ_NP_2X_813772-MLA95638607144_102025-F.webp">
+</div>
 
-    <div class="newsletter">
-        <h3>Bienvenido a Sky Store</h3>
-        <p style="color:#666">Tu tienda online de confianza, donde la tecnología, los gadgets y los accesorios que amas llegan directo a tu puerta. Descubrí Celulares, auriculares y mucho más, con precios increíbles y atención personalizada. ¡Todo lo que buscás, en un solo lugar!</p>
-    </div>
+<div class="thumbs">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_813772-MLA95638607144_102025-F.webp" onclick="cambiar(this,'p1')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_689896-MLA99604877592_122025-F.webp" onclick="cambiar(this,'p1')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_982444-MLA96079704335_102025-F.webp" onclick="cambiar(this,'p1')">
+</div>
 
+<div class="content">
+<h3>Trípode 3110 Profesional</h3>
+<p>📸 Lográ fotos y videos estables como un profesional. Ideal para creadores de contenido, streaming, fotografía y uso diario. Liviano, resistente y fácil de transportar.</p>
+<p class="price">$19.000</p>
+<a href="https://wa.me/5491164022879?text=Hola! Me interesa el Tripode 3110" class="btn">Comprar</a>
+<span class="status disponible">Disponible</span>
+</div>
+</div>
 
-    </aside>
+<!-- STABILIZER -->
+<div class="card">
+<div class="img-box">
+<img id="p2" src="https://http2.mlstatic.com/D_NQ_NP_2X_798089-MLA90484882331_082025-F.webp">
+</div>
+
+<div class="thumbs">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_798089-MLA90484882331_082025-F.webp" onclick="cambiar(this,'p2')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_700829-MLA90103332710_082025-F.webp" onclick="cambiar(this,'p2')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_776431-MLA90104706028_082025-F.webp" onclick="cambiar(this,'p2')">
+</div>
+
+<div class="content">
+<h3>Smartphone Stabilizer</h3>
+<p>🎥 Grabá videos fluidos sin vibraciones. Ideal para TikTok, YouTube y contenido profesional. Mejora automáticamente la estabilidad y la calidad visual.</p>
+<p class="price">$45.000</p>
+<a href="https://wa.me/5491164022879?text=Hola! Me interesa el Stabilizer" class="btn">Comprar</a>
+<span class="status disponible">Disponible</span>
+</div>
+</div>
+
+<!-- DRONE -->
+<div class="card">
+<div class="img-box">
+<img id="p3" src="https://http2.mlstatic.com/D_NQ_NP_2X_942448-MLA95969355252_102025-F.webp">
+</div>
+
+<div class="thumbs">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_942448-MLA95969355252_102025-F.webp" onclick="cambiar(this,'p3')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_628908-MLA99496423166_112025-F.webp" onclick="cambiar(this,'p3')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_923371-MLA91930187217_092025-F.webp" onclick="cambiar(this,'p3')">
+</div>
+
+<div class="content">
+<h3>Drone E88 Pro Max</h3>
+<p>🚁 Capturá tomas aéreas increíbles con facilidad. Ideal para principiantes y entusiastas. Compacto, potente y listo para volar en cualquier momento.</p>
+<p class="price">$98.000</p>
+<a href="https://wa.me/5491164022879?text=Hola! Me interesa el Drone" class="btn">Comprar</a>
+<span class="status agotado">Agotado</span>
+</div>
+</div>
+
+</section>
+
 <script>
-  document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita recargar la página
-    const emailInput = document.getElementById('email');
-    const email = emailInput.value.trim();
-    if (!email) {
-      alert('Por favor ingresa un correo electrónico válido.');
-      emailInput.focus();
-      return;
-    }
-    // Cambia este número por tu número de WhatsApp con código de país, sin signos ni espacios
-    const phoneNumber = '5491164022879';
-    const message = `Hola, quiero suscribirme con este email: ${email}`;
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappURL, '_blank');
-  });
+function cambiar(el,id){
+  document.getElementById(id).src = el.src;
+}
 </script>
-
-  </main>
-
-  <footer>
-    <div class="footer-grid">
-      <div class="col">
-        <h4>Sky Store Argentina Shop Online</h4>
-        <p style="color:#666">Showroom de tecnología y accesorios · Envíos a todo el país · Envios rapidos por CABA</p>
-      </div>
-      <div class="col">
-        <h4>Contacto</h4>
-        <ul>
-          <li>WhatsApp: <a href="https://wa.me/5491164022879" target="_blank" rel="noopener">+54 9 11 6402-2879</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
 
 </body>
 </html>
