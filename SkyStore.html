@@ -35,80 +35,70 @@ header{text-align:center;margin-bottom:20px}
   100%{background-position:0% 50%;}
 }
 
-/* HERO COMPLETO */
+/* HERO */
 .hero{
   text-align:center;
   padding:50px 30px;
   border-radius:20px;
-  backdrop-filter:blur(20px);
   background:rgba(255,255,255,0.05);
   margin-bottom:30px;
 }
 
 .badge{
   background:#22c55e;
-  padding:6px 14px;
+  padding:8px 18px;
   border-radius:999px;
-  font-size:0.9rem;
+  font-size:0.85rem;
   display:inline-block;
+  max-width: fit-content;
+  margin-bottom:15px;
 }
 
-.hero-sub{color:#ddd;margin:10px 0;font-size:1.1rem}
+.hero-sub{color:#ddd;margin:10px 0}
 .hero-desc{color:#bbb;margin-bottom:20px;line-height:1.6}
 
-.hero-buttons{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-/* BOTONES */
-.btn{
-  background:#2563eb;
-  padding:10px 15px;
-  border-radius:999px;
-  text-decoration:none;
-  color:#fff;
-  display:inline-block;
-  transition:.3s;
-}
-.btn:hover{transform:scale(1.05)}
-
-.btn-outline{
-  background:transparent;
-  border:1px solid #fff;
-}
-.btn-outline:hover{
-  background:#fff;
-  color:#000;
-}
-
+/* GRID */
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(4,minmax(180px,1fr));
+  gap:20px;
+  overflow-x:auto;
 }
+
+.grid{
+  scrollbar-width:none;
+}
+
+.grid::-webkit-scrollbar{
+  display:none;
+}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media(max-width:500px){
+  .grid{grid-template-columns:1fr;}
+}
+
 
 /* CARD */
 .card{
   background:rgba(255,255,255,0.06);
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.4);
-  transition:.3s;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
-.card:hover{transform:translateY(-8px)}
 
-/* IMAGEN BOX */
+/* IMAGEN */
 .img-box{
   background:#fff;
-  padding:25px;
+  padding:20px;
+  height:220px;
   display:flex;
-  align-items:center;
   justify-content:center;
-  height:260px;
+  align-items:center;
 }
 
 .img-box img{
@@ -118,76 +108,157 @@ header{text-align:center;margin-bottom:20px}
   transition:.4s;
 }
 
-.card:hover .img-box img{
-  transform:scale(1.08);
-}
+.card:hover img{transform:scale(1.08);}
 
-/* MINIATURAS */
+/* THUMBS */
 .thumbs{
   display:flex;
   justify-content:center;
-  gap:8px;
+  gap:5px;
   padding:10px;
 }
 
 .thumbs img{
-  width:55px;
-  height:55px;
+  width:50px;
+  height:50px;
   object-fit:contain;
   background:#fff;
   border-radius:8px;
-  padding:4px;
+  padding:3px;
   cursor:pointer;
   opacity:.7;
 }
 
-.thumbs img:hover{
-  opacity:1;
-  transform:scale(1.1);
+.thumbs img:hover{opacity:1}
+
+/* CONTENT */
+.content{padding:15px}
+
+.content p{
+  font-size:0.9rem;
+  color:#ccc;
+  line-height:1.5;
 }
 
-/* CONTENIDO */
-.content{
-  padding:20px;
-}
-
+/* 🔥 PRECIO EN VERDE (MODIFICADO) */
 .price{
-  color:#4ade80;
+  color:#25D366 !important;
   font-weight:bold;
   margin:10px 0;
 }
 
+/* BOTONES */
+.buttons{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  flex:1;
+  text-align:center;
+  background:#2563eb;
+  padding:8px;
+  border-radius:8px;
+  text-decoration:none;
+  color:#fff;
+  font-size:0.85rem;
+  cursor:pointer;
+}
+
 .status{
-  padding:6px 12px;
-  border-radius:999px;
+  flex:1;
+  text-align:center;
+  padding:8px;
+  border-radius:8px;
 }
 
 .disponible{background:#22c55e}
 .agotado{background:#ef4444}
+
+/* CARRITO */
+.carrito{
+  margin-top:40px;
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:15px;
+}
+
+.item-carrito{
+  display:grid;
+  grid-template-columns:1fr auto auto auto;
+  gap:10px;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.controles button{
+  background:#2563eb;
+  border:none;
+  color:white;
+  width:25px;
+  height:25px;
+  border-radius:6px;
+}
+
+.eliminar{
+  background:#ef4444;
+  border:none;
+  color:white;
+  border-radius:6px;
+  padding:5px;
+}
+
+.total{
+  margin-top:10px;
+  text-align:right;
+  font-weight:bold;
+  color:#22c55e;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:50px;
+  background:rgba(255,255,255,0.05);
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
+}
+
+.footer-content h3{
+  margin-bottom:10px;
+  color:#4ade80;
+}
+
+.footer-content p{
+  font-size:0.85rem;
+  color:#bbb;
+  margin:8px 0;
+  line-height:1.5;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1 class="brand">Sky Store Argentina</h1>
+<h1 class="brand">Sky Store Argentina</h1>
 </header>
 
-<!-- HERO COMPLETO -->
 <section class="hero">
 
-  <p class="badge">🚀 Tienda online confiable en Argentina</p>
+  <p class="badge">Tienda online de Argentina para todo el pais</p>
 
   <h2>Todo lo que buscás en tecnología, en un solo lugar</h2>
 
   <p class="hero-sub">
-    Emprendimiento 100% independiente, creado con esfuerzo y dedicación para ofrecerte productos de calidad al mejor precio.
+    Productos seleccionados con excelente calidad, garantía y soporte técnico personalizado.
   </p>
 
   <p class="hero-desc">
-    📦 Envíos a todo CABA y a toda Argentina<br>
-    🚚 Envíos gratuitos en Zona Oeste<br>
-    ⚡ Atención rápida, directa y personalizada
+    Envíos a todo CABA y a todo el pais - Entregas rápidas y a tiempo - Soporte técnico directo y personalizado<br><br>
+    Estamos creciendo constantemente para ofrecerte más productos y novedades muy pronto.
   </p>
 
   <div class="hero-buttons">
@@ -198,28 +269,27 @@ header{text-align:center;margin-bottom:20px}
   </div>
 
 </section>
+<section class="grid" id="productos">
 
-<!-- PRODUCTOS -->
-<section id="productos" class="grid">
-
-<!-- TRIPO -->
+<!-- TRIPODE -->
 <div class="card">
 <div class="img-box">
 <img id="p1" src="https://http2.mlstatic.com/D_NQ_NP_2X_813772-MLA95638607144_102025-F.webp">
 </div>
-
 <div class="thumbs">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_813772-MLA95638607144_102025-F.webp" onclick="cambiar(this,'p1')">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_689896-MLA99604877592_122025-F.webp" onclick="cambiar(this,'p1')">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_982444-MLA96079704335_102025-F.webp" onclick="cambiar(this,'p1')">
 </div>
-
 <div class="content">
 <h3>Trípode 3110 Profesional</h3>
-<p>📸 Lográ fotos y videos estables como un profesional. Ideal para creadores de contenido, streaming, fotografía y uso diario. Liviano, resistente y fácil de transportar.</p>
+<p>Ideal para lograr fotos y videos estables con excelente precisión. Liviano, resistente y fácil de transportar, perfecto para creadores de contenido, fotografía y uso diario. Ajuste de altura y soporte firme para mejores resultados.</p>
 <p class="price">$19.000</p>
-<a href="https://wa.me/5491164022879?text=Hola! Me interesa el Tripode 3110" class="btn">Comprar</a>
-<span class="status disponible">Disponible</span>
+<div class="buttons">
+<div class="btn" onclick="agregarCarrito('Tripode 3110',19000)">Agregar</div>
+<a class="btn" href="https://wa.me/5491164022879?text=Hola! Quiero el Tripode">Comprar</a>
+<div class="status disponible">Disponible</div>
+</div>
 </div>
 </div>
 
@@ -228,19 +298,94 @@ header{text-align:center;margin-bottom:20px}
 <div class="img-box">
 <img id="p2" src="https://http2.mlstatic.com/D_NQ_NP_2X_798089-MLA90484882331_082025-F.webp">
 </div>
-
 <div class="thumbs">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_798089-MLA90484882331_082025-F.webp" onclick="cambiar(this,'p2')">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_700829-MLA90103332710_082025-F.webp" onclick="cambiar(this,'p2')">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_776431-MLA90104706028_082025-F.webp" onclick="cambiar(this,'p2')">
 </div>
-
 <div class="content">
 <h3>Smartphone Stabilizer</h3>
-<p>🎥 Grabá videos fluidos sin vibraciones. Ideal para TikTok, YouTube y contenido profesional. Mejora automáticamente la estabilidad y la calidad visual.</p>
+<p>Videos fluidos y profesionales sin vibraciones gracias a su sistema de estabilización inteligente. Su diseño lo hace ideal para llevar a cualquier lugar, perfecto para redes sociales o uso diario. Compatible con la mayoría de smartphones y fácil de usar.</p>
 <p class="price">$45.000</p>
-<a href="https://wa.me/5491164022879?text=Hola! Me interesa el Stabilizer" class="btn">Comprar</a>
-<span class="status disponible">Disponible</span>
+<div class="buttons">
+<div class="btn" onclick="agregarCarrito('Stabilizer',45000)">Agregar</div>
+<a class="btn" href="https://wa.me/5491164022879?text=Hola! Quiero el Stabilizer">Comprar</a>
+<div class="status disponible">Disponible</div>
+</div>
+</div>
+</div>
+
+<!-- KIT VIDEOVIGILANCIA -->
+<div class="card">
+<div class="img-box">
+<img id="p5" src="https://http2.mlstatic.com/D_NQ_NP_2X_608132-MLA108112230730_032026-F.webp">
+</div>
+<div class="thumbs">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_843407-MLA104648077097_012026-F.webp" onclick="cambiar(this,'p5')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_608132-MLA108112230730_032026-F.webp" onclick="cambiar(this,'p5')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_801204-MLA108889171109_032026-F.webp" onclick="cambiar(this,'p5')">
+</div>
+<div class="content">
+<h3>Kit Videovigilancia 1080P HD</h3>
+<p>Protegé tu hogar o negocio con imágenes de alta definición. Incluye sistema completo de cámaras con visión nocturna y monitoreo continuo, brindando seguridad las 24 horas. Fácil de instalar, ideal para mantener el control desde cualquier lugar.</p>
+<p class="price">$179.000</p>
+<div class="buttons">
+<div class="btn" onclick="agregarCarrito('Kit Videovigilancia',179000)">Agregar</div>
+<a class="btn" href="https://wa.me/5491164022879?text=Hola! Quiero el Kit Videovigilancia">
+Comprar
+</a>
+<div class="status disponible">Disponible</div>
+</div>
+</div>
+</div>
+
+<!-- CERRADURA INTELIGENTE -->
+<div class="card">
+<div class="img-box">
+<img id="p4" src="https://http2.mlstatic.com/D_NQ_NP_2X_998525-MLA106081025103_012026-F.webp">
+</div>
+<div class="thumbs">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_998525-MLA106081025103_012026-F.webp" onclick="cambiar(this,'p4')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_943385-MLA105482643232_012026-F.webp" onclick="cambiar(this,'p4')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_867734-MLA106082699989_012026-F.webp" onclick="cambiar(this,'p4')">
+</div>
+<div class="content">
+<h3>Cerradura Pro OM Inteligente</h3>
+<p>Modernizá la seguridad de tu hogar con acceso mediante huella digital. Abrí y cerrá sin llaves de forma rápida y segura, con un sistema práctico. Ideal para casas, oficinas o alquileres, brindando mayor comodidad y control en el acceso diario.</p>
+<p class="price">$120.000</p>
+<div class="buttons">
+<div class="btn" onclick="agregarCarrito('Cerradura Inteligente',120000)">Agregar</div>
+<a class="btn" href="https://wa.me/5491164022879?text=Hola! Quiero la Cerradura Inteligente">
+Comprar
+</a>
+
+<div class="status disponible">Disponible</div>
+</div>
+
+</div>
+</div>
+
+<!-- VENTILADOR DE TECHO -->
+<div class="card">
+<div class="img-box">
+<img id="p6" src="https://http2.mlstatic.com/D_NQ_NP_2X_990461-MLA88841155417_072025-F.webp">
+</div>
+<div class="thumbs">
+<img src="https://http2.mlstatic.com/D_Q_NP_2X_950516-MLA91423258575_092025-F.webp" onclick="cambiar(this,'p6')">
+<img src="https://http2.mlstatic.com/D_Q_NP_2X_910148-MLA91031369072_092025-F.webp" onclick="cambiar(this,'p6')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_990461-MLA88841155417_072025-F.webp" onclick="cambiar(this,'p6')">
+</div>
+<div class="content">
+<h3>Ventilador de Techo HY-8111</h3>
+<p>Mantené tus ambientes frescos y bien iluminados con su sistema de ventilación eficiente y luz integrada cálida/fría. Diseño moderno, bajo consumo y funcionamiento silencioso, ideal para el hogar o espacios de trabajo.</p>
+<p class="price">$120.000</p>
+<div class="buttons">
+<div class="btn" onclick="agregarCarrito('Ventilador HY-8111',120000)">Agregar</div>
+<a class="btn" href="https://wa.me/5491164022879?text=Hola! Quiero el Ventilador HY-8111">
+Comprar
+</a>
+<div class="status disponible">Disponible</div>
+</div>
 </div>
 </div>
 
@@ -249,29 +394,175 @@ header{text-align:center;margin-bottom:20px}
 <div class="img-box">
 <img id="p3" src="https://http2.mlstatic.com/D_NQ_NP_2X_942448-MLA95969355252_102025-F.webp">
 </div>
-
 <div class="thumbs">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_942448-MLA95969355252_102025-F.webp" onclick="cambiar(this,'p3')">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_628908-MLA99496423166_112025-F.webp" onclick="cambiar(this,'p3')">
 <img src="https://http2.mlstatic.com/D_NQ_NP_2X_923371-MLA91930187217_092025-F.webp" onclick="cambiar(this,'p3')">
 </div>
-
 <div class="content">
 <h3>Drone E88 Pro Max</h3>
-<p>🚁 Capturá tomas aéreas increíbles con facilidad. Ideal para principiantes y entusiastas. Compacto, potente y listo para volar en cualquier momento.</p>
-<p class="price">$98.000</p>
-<a href="https://wa.me/5491164022879?text=Hola! Me interesa el Drone" class="btn">Comprar</a>
-<span class="status agotado">Agotado</span>
+<p>Capturá imágenes y videos aéreos con excelente estabilidad y calidad. Cuenta con control fácil, diseño plegable y funciones ideales para principiantes y uso recreativo. Perfecto para explorar, grabar y disfrutar desde nuevas alturas.</p>
+<p class="price">$92.000</p>
+<div class="buttons">
+<div class="btn" onclick="agregarCarrito('Drone',92000)">Agregar</div>
+<a class="btn" href="https://wa.me/5491164022879?text=Hola! Quiero el Drone">Comprar</a>
+<div class="status disponible">Disponible</div>
 </div>
 </div>
+</div>
+
+<!-- TECLA SMART WIFI -->
+<div class="card">
+<div class="img-box">
+<img id="p10" src="https://http2.mlstatic.com/D_NQ_NP_2X_910377-MLA94648209161_102025-F.webp">
+</div>
+<div class="thumbs">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_910377-MLA94648209161_102025-F.webp" onclick="cambiar(this,'p10')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_917628-MLA99492866836_112025-F.webp" onclick="cambiar(this,'p10')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_699998-MLA99977285115_112025-F.webp" onclick="cambiar(this,'p10')">
+</div>
+<div class="content">
+<h3>Tecla Smart WiFi Táctil</h3>
+<p>La iluminación de tu hogar desde tu celular o directamente con su panel táctil. Es compatible por control de voz y combina tecnología con diseño moderno, integrándose en cualquier ambiente gracias a su diseño elegante y minimalista</p>
+<p class="price">$32.000</p>
+<div class="buttons">
+<div class="btn" onclick="agregarCarrito('Tecla Smart WiFi',32000)">Agregar</div>
+<a class="btn" href="https://wa.me/5491164022879?text=Hola! Quiero la Tecla Smart WiFi">Comprar</a>
+<div class="status disponible">Disponible</div>
+</div>
+</div>
+</div>
+
+<!-- COLCHON INFLABLE -->
+<div class="card">
+<div class="img-box">
+<img id="p11" src="https://http2.mlstatic.com/D_NQ_NP_2X_872789-MLA108251403684_032026-F.webp">
+</div>
+<div class="thumbs">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_872789-MLA108251403684_032026-F.webp" onclick="cambiar(this,'p11')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_902846-MLA108252025418_032026-F.webp" onclick="cambiar(this,'p11')">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_636899-MLA109041744995_032026-F.webp" onclick="cambiar(this,'p11')">
+</div>
+<div class="content">
+<h3>Colchón Inflable con Inflador Automático</h3>
+<p>Comodidad rápida y práctica en cualquier lugar. Se infla en minutos gracias a su inflador automático incorporado. Ideal para visitas, camping o uso diario, con superficie cómoda y resistente.</p>
+<p class="price">$138.000</p>
+<div class="buttons">
+<div class="btn" onclick="agregarCarrito('Colchon Inflable',138000)">Agregar</div>
+<a class="btn" href="https://wa.me/5491164022879?text=Hola! Quiero el Colchon Inflable">Comprar</a>
+<div class="status disponible">Disponible</div>
+</div>
+</div>
+</div>
+
 
 </section>
 
+
+<!-- CARRITO -->
+<div class="carrito">
+<h2>🛒 Carrito</h2>
+<div id="listaCarrito"></div>
+<button class="btn" onclick="enviarWhatsApp()">Enviar pedido por WhatsApp</button>
+</div>
+
 <script>
+let carrito=[];
+
+function agregarCarrito(nombre,precio){
+let item=carrito.find(p=>p.nombre===nombre);
+if(item){item.cantidad++;}
+else{carrito.push({nombre,precio,cantidad:1});}
+renderCarrito();
+}
+
+function cambiarCantidad(nombre,delta){
+let item=carrito.find(p=>p.nombre===nombre);
+if(item){
+item.cantidad+=delta;
+if(item.cantidad<=0){carrito=carrito.filter(p=>p.nombre!==nombre);}
+}
+renderCarrito();
+}
+
+function eliminarProducto(nombre){
+carrito=carrito.filter(p=>p.nombre!==nombre);
+renderCarrito();
+}
+
+function renderCarrito(){
+let cont=document.getElementById("listaCarrito");
+if(carrito.length===0){
+cont.innerHTML="Carrito vacío";
+return;
+}
+
+let total=0;
+cont.innerHTML="";
+
+carrito.forEach(p=>{
+let sub=p.precio*p.cantidad;
+total+=sub;
+
+cont.innerHTML+=`
+<div class="item-carrito">
+<div>${p.nombre}<br>$${p.precio}</div>
+<div class="controles">
+<button onclick="cambiarCantidad('${p.nombre}',-1)">-</button>
+<span>${p.cantidad}</span>
+<button onclick="cambiarCantidad('${p.nombre}',1)">+</button>
+</div>
+<div>$${sub}</div>
+<button class="eliminar" onclick="eliminarProducto('${p.nombre}')">X</button>
+</div>
+`;
+});
+
+cont.innerHTML+=`<div class="total">Total: $${total}</div>`;
+}
+
+function enviarWhatsApp(){
+let msg="Hola! Quiero comprar:\n";
+carrito.forEach(p=>{
+msg+=`${p.nombre} x${p.cantidad} = $${p.precio*p.cantidad}\n`;
+});
+window.open("https://wa.me/5491164022879?text="+encodeURIComponent(msg));
+}
+
 function cambiar(el,id){
-  document.getElementById(id).src = el.src;
+document.getElementById(id).src=el.src;
 }
 </script>
+<!-- FOOTER -->
+<footer class="footer">
 
+  <div class="footer-content">
+
+    <h3>Sky Store Argentina</h3>
+
+    <p>
+      Somos un emprendimiento en crecimiento ubicado en Zona Oeste, enfocado en ofrecer productos de tecnología de calidad,
+      con garantía y soporte técnico personalizado.
+    </p>
+
+    <p>
+      Los tiempos de entrega pueden variar dependiendo del producto y su disponibilidad,
+      pudiendo extenderse en casos de mayor complejidad logística.
+    </p>
+
+    <p>
+      Política de privacidad: Respetamos la privacidad de nuestros clientes. La información compartida
+      se utiliza únicamente para la gestión de pedidos y contacto comercial. No compartimos datos con terceros.
+    </p>
+
+    <p>
+      © 2026 Sky Store Argentina - Todos los derechos reservados.<br>
+      Este sitio web es propiedad de Sky Store Argentina y su contenido está protegido por derechos de autor.
+      Queda prohibida su reproducción total o parcial sin autorización.
+    </p>
+
+  </div>
+
+</footer>
 </body>
 </html>
